@@ -1,7 +1,7 @@
 var weatherApiKey = "d8f684a9f3475c882b2c47422c709de2";
 var city;
-
-
+var forcastTrigger = true;
+var weatherTrigger = true;
 const searchButton = document.getElementById('searchButton');
 
 searchButton.addEventListener("click", () => {
@@ -10,18 +10,32 @@ searchButton.addEventListener("click", () => {
 
     city = searchInput;
     var weatherApiCall = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + weatherApiKey;
-
-    function createWeatherCards()  {
-        var i = 1;
-        while (i <= 5) {
-            var code = '<div class="card" id="nextDayCard' + i +  '"style = "width: 10rem;"><ul class="list-group list-group-flush" id="nextDayList' + i + '"><li class="list-group-item" id="nextDayDate' + i + '"></li><li class="list-group-item" id="nextDayTemp' + i + '"></li><li class="list-group-item" id="nextDayWind' + i + '"></li><li class="list-group-item"id="nextDayHumidity' + i + '"></li><li class="list-group-item"id="nextDaySymbol' + i + '"></li></ul></div>';
-            var forcastRow = document.getElementById('forcastRow');
-            forcastRow.innerHTML += code;
-            i++;
+    //create forcast row function
+    function createWeatherCard()  { 
+        if(weatherTrigger == true){
+            var code = '<div class="card" style="width: 90%"><div class="card-header" id = "mainCity"></div><div class="card-body"><ul class="list-group list-group-flush"><li class="list-group-item" id = "mainTemp"></li><li class="list-group-item" id = "mainWind"></li><li class="list-group-item" id = "mainHumidity"></li></ul></div></div>'
+            var weatherRow = document.getElementById('weatherRow');
+            weatherRow.innerHTML += code;
+            weatherTrigger = false;
         }
     };
-
-    createWeatherCards();
+    //create forcast row function
+    function createForcastCards()  { 
+        if(forcastTrigger == true){
+            var i = 1;
+            while (i <= 5) {
+                var code = '<div class="card" id="nextDayCard' + i +  '"style = "width: 10rem;"><ul class="list-group list-group-flush" id="nextDayList' + i + '"><li class="list-group-item" id="nextDayDate' + i + '"></li><li class="list-group-item" id="nextDayTemp' + i + '"></li><li class="list-group-item" id="nextDayWind' + i + '"></li><li class="list-group-item"id="nextDayHumidity' + i + '"></li><li class="list-group-item"id="nextDaySymbol' + i + '"></li></ul></div>';
+                var forcastRow = document.getElementById('forcastRow');
+                forcastRow.innerHTML += code;
+                i++;
+            }
+            forcastTrigger = false;
+        }
+    };
+    //call weather row function
+    createWeatherCard();
+    //call forcast row function
+    createForcastCards();
 
     fetch(weatherApiCall)
         .then(function (response) {
@@ -60,54 +74,3 @@ searchButton.addEventListener("click", () => {
                 })
         });
 });
-
-
-
-
-
- /*create div element
- let div = document.createElement("div");
- div.className = "card";
- div.id = "nextDay" + i
- div.style = "width: 10rem;";
- //call div parent
- var forcastRow = document.getElementById('forcastRow');
- //insert div through parent
- forcastRow.appendChild(div);
- //create ul
- let ul = document.createElement('ul');
- ul.className = "list-group list-group-flush";
- ul.id = "forcastList" + i;
- //call ul parent
- var forcastDiv = document.getElementById('nextDay' + i);
- //insert ul through parent
- forcastDiv.appendChild(ul);
- //create first li
- let li = document.createElement('li');
- li.className = "list-group-item";
- li.id = 'nextDay' + i + 'Temp'
- //call li parent
- var forcastList = document.getElementById('forcastList' + i);
- //insert li through parent
- forcastList.appendChild(li)
- //next li
- let li2 = document.createElement('li');
- li2.className = "list-group-item";
- li2.id = 'nextDay' + i + 'Wind'
- //insert li through parent
- forcastList.appendChild(li2)
- //next li
- let li3 = document.createElement('li');
- li3.className = "list-group-item";
- li3.id = 'nextDay' + i + 'Humidity'
-     //insert li through parent
- forcastList.appendChild(li3)
- //next li
- let li4 = document.createElement('li');
- li4.className = "list-group-item";
- li4.id = 'nextDay' + i + 'Date'
-     //insert li through parent
- forcastList.appendChild(li4)
- i++
-}
-*/
