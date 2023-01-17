@@ -1,19 +1,22 @@
-# Bootcamp-Work-Day-Planner
-
+# Weather Application
 
 ## Description
 
 caption:
 <br>
-![<img src=".png" width="250"/>](images/.png)
+![<img src="first-search.png" width="250"/>](images/first-search.png)
 <br>
 caption:
 <br>
-![<img src=".png" width="250"/>](images/.png)
+![<img src="two-api-call-objects.png" width="250"/>](images/two-api-call-objects.png)
 <br>
 caption:
 <br>
-![<img src=".png" width="250"/>](images/.png)
+![<img src="two-objects-saved-to-localStorage.png" width="250"/>](images/two-objects-saved-to-localStorage.png)
+<br>
+caption:
+<br>
+![<img src="weather-prompt..png" width="250"/>](images/weather-prompt..png)
 
 ## Installation
 N/A
