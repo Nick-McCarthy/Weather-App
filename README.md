@@ -22,7 +22,7 @@ caption: Prompt when page first opens
 ## Installation
 N/A
 ## Usage
-Go to the following URL:
+Go to the following URL:  https://nick-mccarthy.github.io/Weather-App/
 
 ## Credits
 Karen Peazzoni: https://github.com/kpeazzoni/UTA-JS-Challenge-3
